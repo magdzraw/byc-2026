@@ -46,7 +46,7 @@ byc-2026/
 
 ---
 
-## Inicio rápido (sin instalar nada en tu PC)
+## Inicio rápido
 
 1. Haz clic en el botón **Open in Colab** al inicio de este README.
 2. En la **Sección 2**, selecciona la especie (`Alerce`, `Araucaria`, `Lleuque`, `Queule` o `Ruil`) y la escala (`RCE_CHILE` o `UICN_GLOBAL`).
@@ -56,7 +56,7 @@ byc-2026/
 
 ---
 
-## Hoja de ruta (Integración con MapBiomas Chile)
+## Hoja de ruta
 
 El siguiente módulo en desarrollo incorporará datos abiertos de **MapBiomas Chile** ([chile.mapbiomas.org](https://chile.mapbiomas.org/) — Colección 2.0 de Cobertura y Uso del Suelo 1999–2024 y Colección 1.0 de Fuego) **sin requerir Google Earth Engine**, para cuantificar amenazas de pérdida de bosque nativo, presión de plantaciones forestales y recurrencia de incendios en torno a cada localidad y unidad genética (Subcriterio B(b)(iii) UICN/RCE).
 
