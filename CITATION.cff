@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "Si utilizas este flujo o cuaderno en tu investigación o docencia, por favor cítalo usando estos metadatos."
+title: "ByC 2026: Herramientas abiertas para evaluación espacial UICN/RCE (EOO, AOO), biodiversidad local y estructura genética en flora nativa de Chile"
+type: software
+version: "1.0.0"
+date-released: "2026-11-19"
+license: MIT
+repository-code: "https://github.com/magdzraw/byc-2026"
+url: "https://github.com/magdzraw/byc-2026"
+authors:
+  - family-names: "Aguirre-Díaz"
+    given-names: "Mauricio"
+    email: "maguirred2017@udec.cl"
+    affiliation: "Facultad de Ciencias Forestales, Universidad de Concepción, Chile"
+  - family-names: "Hasbún Zaror"
+    given-names: "Rodrigo"
+    affiliation: "Facultad de Ciencias Forestales, Universidad de Concepción, Chile"
+keywords:
+  - conservation-biology
+  - iucn-red-list
+  - rce-chile
+  - eoo
+  - aoo
+  - population-genetics
+  - structure
+  - biodiversity
+  - chilean-flora
+  - google-colab

@@ -1,0 +1,18 @@
+# Cachés y archivos temporales generados al ejecutar el notebook
+cache_limites_geo/
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+
+# Salidas pesadas o regenerables en cada corrida
+*.gpkg
+*.html
+*.svg
+evanno_resumen_*.csv
+figura_structure_*.png
+
+# Sistema operativo y editores
+.DS_Store
+Thumbs.db
+~$*.xlsx
+.vscode/
