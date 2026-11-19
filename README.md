@@ -23,7 +23,7 @@ Diseñado para estudiantes sin experiencia previa en programación ni Google Ear
 5. **Módulo 11 (opcional) — Espacialización de estructura genética (`STRUCTURE`):** lectura directa del archivo `.zip` de la carpeta `Results/` de STRUCTURE, cálculo automático de **Evanno ($\Delta K$)** y $\text{Mean }\ln P(D) \pm \text{SD}$, selección manual o automática de $K$, consenso entre réplicas tipo CLUMPP (algoritmo húngaro), **figura compuesta de publicación (A + B + C)** a 300 dpi (PNG y SVG), mapa interactivo **Folium** con diagramas de torta SVG vectoriales (exportable a `.html`) y superficie exploratoria **IDW** opcional enmascarada.
 6. **Exportación directa a QGIS:** genera un único GeoPackage (`.gpkg`, proyectado en UTM Chile `EPSG:32718`/`EPSG:32719`) con todas las capas vectoriales y tablas de ancestría poblacional listas para activar *Diagramas → Gráfico de tarta* en QGIS.
 
-![Ejemplo de figura compuesta de estructura genética para Lleuque (K = 5)](assets/ejemplo_figura_lleuque_K5.png)
+![Ejemplo de figura compuesta de estructura genética para Lleuque (K = 5)](assets/figura_structure_lleuque_K3.png)
 
 ---
 
