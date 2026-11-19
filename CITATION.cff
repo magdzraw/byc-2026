@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "Si utilizas este flujo o cuaderno en tu investigación o docencia, por favor cítalo usando estos metadatos."
-title: "ByC 2026: Herramientas abiertas para evaluación espacial UICN/RCE (EOO, AOO), biodiversidad local y estructura genética en flora nativa de Chile"
+title: "ByC 2026: Herramientas abiertas para evaluación espacial UICN/RCE (EOO, AOO), biodiversidad local, estructura genética y amenazas de uso del suelo (MapBiomas Chile) en flora nativa de Chile"
 type: software
-version: "1.0.0"
+version: "1.1.0"
 date-released: "2026-11-19"
 license: MIT
 repository-code: "https://github.com/magdzraw/byc-2026"
@@ -24,5 +24,7 @@ keywords:
   - population-genetics
   - structure
   - biodiversity
+  - land-use-change
+  - mapbiomas-chile
   - chilean-flora
   - google-colab

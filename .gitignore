@@ -1,5 +1,8 @@
 # Cachés y archivos temporales generados al ejecutar el notebook
 cache_limites_geo/
+mapbiomas_rasters_tmp/
+gadm41_*.zip
+statistics_lulc_chile_col2_*.xlsx
 __pycache__/
 .ipynb_checkpoints/
 *.pyc
@@ -8,8 +11,13 @@ __pycache__/
 *.gpkg
 *.html
 *.svg
+*.tif
+*.tiff
 evanno_resumen_*.csv
+resumen_amenazas_mapbiomas_*.csv
+vulnerabilidad_clusters_mapbiomas_*.csv
 figura_structure_*.png
+figura_mapbiomas_*.png
 
 # Sistema operativo y editores
 .DS_Store
