@@ -22,14 +22,16 @@ Diseñado para estudiantes sin experiencia previa en programación ni Google Ear
 4. **Biodiversidad local de flora vascular acompañante (`Tracheophyta`):** malla hexagonal equivalente ($r = 2500\text{ m}$, $A_{\text{hex}} \approx 16{,}24\text{ km}^2$), consulta paginada a GBIF (`phylumKey = 7707728`) y cálculo de riqueza observada ($S_{\text{obs}}$), **Shannon-Wiener ($H'$)**, **Pielou ($J'$)**, **Gini-Simpson ($1 - D$)**, estimador **Chao1 ($\hat{S}_{\text{Chao1}}$)** y **cobertura de muestra ($\hat{C}$)**.
 5. **Módulo 11 — Espacialización de estructura genética (`STRUCTURE`):** lectura directa del archivo `.zip` de la carpeta `Results/` de STRUCTURE, cálculo automático de **Evanno ($\Delta K$)** y $\text{Mean }\ln P(D) \pm \text{SD}$, selección manual o automática de $K$, consenso entre réplicas tipo CLUMPP (algoritmo húngaro), **figura compuesta de publicación (A + B + C)** a 300 dpi (PNG y SVG), mapa interactivo **Folium** con diagramas de torta SVG vectoriales (exportable a `.html`) y superficie exploratoria **IDW** opcional enmascarada.
 6. **Módulo 12 — Diagnóstico de amenazas de uso del suelo e incendios (MapBiomas Chile, sin GEE):**
-   * **Modo comunal automático (1999–2024):** integra las estadísticas oficiales de **MapBiomas Chile Colección 2.0** con límites comunales `GADM v4.1` para cuantificar composición del paisaje (Bosque Nativo, Plantaciones Forestales, Matorral, Agricultura/Pasturas, Infraestructura), trayectoria de 26 años, tasa anual compuesta de deforestación (Puyravaud, 2003), matriz exacta de transiciones `1999 → 2024` y respaldo cuantitativo del **Subcriterio B(b)(iii)** UICN/RCE.
-   * **Modo ráster 30 m + MapBiomas Fuego Col. 1 (opcional *plug-and-play*):** acepta recortes GeoTIFF (`.tif` o `.zip`) descargados sin GEE desde MapBiomas Chile para extraer píxeles exactos en buffers multiescala (`2 km` y `7,5 km`) y celdas AOO ($2 \times 2\text{ km}$), incorporando superficie quemada, recurrencia de incendios (2013–2025) y año del último evento.
-   * **Síntesis `STRUCTURE` × MapBiomas:** pondera la exposición a amenazas según las proporciones de ancestría ($Q$) para identificar las **unidades genéticas más vulnerables** y priorizar localidades de conservación.
+   * **Indicadores con respaldo bibliográfico:** evalúa la tasa anual compuesta de cambio de bosque nativo $r$ (**Puyravaud, 2003**) en relación con el **Subcriterio B(b)(iii)** UICN/RCE, el remanente de bosque nativo respecto al **umbral crítico de fragmentación del 30 %** (**Andrén, 1994**; **Fahrig, 2003**; **Echeverría et al., 2006**), la presión y reemplazo directo hacia plantaciones forestales (**Miranda et al., 2017**; **Heilmayr et al., 2020**), y la afectación por incendios (**Bowman et al., 2019**).
+   * **Modo comunal automático (1999–2024) y modo ráster 30 m + MapBiomas Fuego Col. 1:** integra estadísticas oficiales de **MapBiomas Chile Colección 2.0** con límites `GADM v4.1`, y activa automáticamente los paquetes pre-recortados a $30\text{ m}$ + **MapBiomas Fuego Col. 1 (2013–2025)** en buffers (`2 km` y `7,5 km`) y celdas AOO ($2 \times 2\text{ km}$).
+   * **Síntesis `STRUCTURE` × MapBiomas y mapa cartográfico estático (300 dpi):** pondera la exposición de cada unidad genética por ancestría ($\bar{Q}$, **Moritz, 1994**) mediante gráficos bivariados y paneles comparativos (*small multiples*), y genera un **mapa estático cartográfico de amenazas** (`PNG` 300 dpi + `SVG`) con contorno del EOO oficial, cobertura actual, pérdida histórica de bosque nativo y cicatrices de fuego.
 7. **Exportación directa a QGIS:** genera un único GeoPackage (`.gpkg`, proyectado en UTM Chile `EPSG:32718`/`EPSG:32719`) con todas las capas vectoriales de distribución, biodiversidad, estructura genética y amenazas MapBiomas, además de mapas `.html`, tablas `.csv` y figuras a 300 dpi.
 
 ![Ejemplo de figura compuesta de estructura genética para Lleuque (K = 3)](assets/figura_structure_lleuque_K3.png)
 
-![Ejemplo de diagnóstico de amenazas MapBiomas Chile y vulnerabilidad por clúster genético en Lleuque](assets/ejemplo_mapbiomas_riesgo_lleuque.png)
+![Ejemplo de indicadores ecológicos MapBiomas Chile y exposición por unidad genética en Lleuque](assets/ejemplo_mapbiomas_riesgo_lleuque.png)
+
+![Ejemplo de mapa estático de cobertura, EOO y amenazas MapBiomas Chile en Lleuque](assets/ejemplo_mapa_amenazas_lleuque.png)
 
 ---
 
@@ -50,7 +52,8 @@ byc-2026/
 ├── assets/
 │   ├── figura_structure_lleuque_K3.png
 │   ├── ejemplo_figura_lleuque_K5.png
-│   └── ejemplo_mapbiomas_riesgo_lleuque.png
+│   ├── ejemplo_mapbiomas_riesgo_lleuque.png
+│   └── ejemplo_mapa_amenazas_lleuque.png
 ├── requirements.txt                                           # Dependencias Python
 ├── CITATION.cff                                               # Metadatos estándar de citación académica
 ├── LICENSE                                                    # Licencia MIT
@@ -71,14 +74,21 @@ byc-2026/
 
 ## Referencias principales
 
+* **Andrén, H. (1994).** Effects of habitat fragmentation on birds and mammals in landscapes with different proportions of suitable habitat: a review. *Oikos*, 71(3), 355–366. https://doi.org/10.2307/3545823
+* **Bowman, D. M. J. S., Moreira-Muñoz, A., Kolden, C. A., Chávez, R. O., Muñoz, A. A., Salinas, F., ... & Johnston, F. H. (2019).** Human–environmental drivers and impacts of the globally extreme 2017 Chilean fires. *Ambio*, 48(4), 350–362. https://doi.org/10.1007/s13280-018-1084-1
 * **Chao, A., & Jost, L. (2012).** Coverage-based rarefaction and extrapolation: standardizing samples by completeness rather than size. *Ecology*, 93(12), 2533–2547. https://doi.org/10.1890/11-1952.1
+* **Echeverría, C., Coomes, D., Salas, J., Rey-Benayas, J. M., Lara, A., & Newton, A. C. (2006).** Rapid deforestation and fragmentation of Chilean Temperate Forests. *Biological Conservation*, 130(4), 481–494. https://doi.org/10.1016/j.biocon.2006.01.017
 * **Evanno, G., Regnaut, S., & Goudet, J. (2005).** Detecting the number of clusters of individuals using the software STRUCTURE: a simulation study. *Molecular Ecology*, 14(8), 2611–2620. https://doi.org/10.1111/j.1365-294X.2005.02553.x
+* **Fahrig, L. (2003).** Effects of habitat fragmentation on biodiversity. *Annual Review of Ecology, Evolution, and Systematics*, 34, 487–515. https://doi.org/10.1146/annurev.ecolsys.34.011802.132419
+* **Heilmayr, R., Echeverría, C., & Lambin, É. F. (2020).** Impacts of Chilean forest subsidies on forest cover, carbon and biodiversity. *Nature Sustainability*, 3, 701–709. https://doi.org/10.1038/s41893-020-0547-0
 * **IUCN Standards and Petitions Committee (2024).** *Guidelines for Using the IUCN Red List Categories and Criteria*. Version 16.
 * **IUCN (2012).** *Guidelines for Application of IUCN Red List Criteria at Regional and National Levels*. Version 4.0.
 * **MapBiomas Chile (2026).** *Proyecto MapBiomas Chile — Colección 2.0 de la Serie Anual de Mapas de Cobertura y Uso del Suelo de Chile (1999–2024) y Colección 1.0 de MapBiomas Fuego Chile (2013–2025)*. Datos de acceso abierto (CC BY 4.0). https://chile.mapbiomas.org/
+* **Miranda, A., Altamirano, A., Cayuela, L., Lara, A., & González, M. (2017).** Native forest loss in the Chilean biodiversity hotspot: revealing the evidence. *Regional Environmental Change*, 17, 285–297. https://doi.org/10.1007/s10113-016-1010-7
 * **MMA — Ministerio del Medio Ambiente de Chile (2011).** D.S. N° 29/2011: *Reglamento para la Clasificación de Especies Silvestres (RCE)*.
 * **MMA (2020).** D.S. N° 42/2020: *Plan RECOGE del Ruil (Nothofagus alessandrii)*.
 * **MMA – FAO – GEF (2022).** *Plan RECOGE del Queule (Gomortega keule)* (pp. 5–7; LEP-UdeC, 2019).
+* **Moritz, C. (1994).** Defining 'Evolutionarily Significant Units' for conservation. *Trends in Ecology & Evolution*, 9(10), 373–375. https://doi.org/10.1016/0169-5347(94)90057-4
 * **Pereira, A. G., Ferreira, M. F. S., da Silveira, T. C., Soler-Guilhen, J. H., Canal, G. B., Alves, L. B., de Almeida, F. A. N., Gaiotto, F. A., & Ferreira, A. (2022).** Patterns of genetic diversity and structure of a threatened palm species (*Euterpe edulis* Arecaceae) from the Brazilian Atlantic Forest. *Heredity*, 129, 161–168. https://doi.org/10.1038/s41437-022-00549-7 *(inspiración y referencia del diseño visual multipanel A + B + C)*.
 * **Pritchard, J. K., Stephens, M., & Donnelly, P. (2000).** Inference of population structure using multilocus genotype data. *Genetics*, 155(2), 945–959. https://doi.org/10.1093/genetics/155.2.945
 * **Puyravaud, J.-P. (2003).** Standardizing the calculation of the annual rate of deforestation. *Forest Ecology and Management*, 177(1–3), 593–596. https://doi.org/10.1016/S0378-1127(02)00335-3
