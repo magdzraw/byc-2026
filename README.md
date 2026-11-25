@@ -27,7 +27,7 @@ Diseñado para estudiantes sin experiencia previa en programación ni Google Ear
    * **Síntesis `STRUCTURE` × MapBiomas:** pondera la exposición a amenazas según las proporciones de ancestría ($Q$) para identificar las **unidades genéticas más vulnerables** y priorizar localidades de conservación.
 7. **Exportación directa a QGIS:** genera un único GeoPackage (`.gpkg`, proyectado en UTM Chile `EPSG:32718`/`EPSG:32719`) con todas las capas vectoriales de distribución, biodiversidad, estructura genética y amenazas MapBiomas, además de mapas `.html`, tablas `.csv` y figuras a 300 dpi.
 
-![Ejemplo de figura compuesta de estructura genética para Lleuque (K = 5)](assets/ejemplo_figura_lleuque_K5.png)
+![Ejemplo de figura compuesta de estructura genética para Lleuque (K = 3)](assets/figura_structure_lleuque_K3.png)
 
 ![Ejemplo de diagnóstico de amenazas MapBiomas Chile y vulnerabilidad por clúster genético en Lleuque](assets/ejemplo_mapbiomas_riesgo_lleuque.png)
 
@@ -38,13 +38,17 @@ Diseñado para estudiantes sin experiencia previa en programación ni Google Ear
 ```text
 byc-2026/
 ├── notebooks/
-│   └── BYC_Dist_AOO_EOO.ipynb                                 # Notebook principal modular y documentado (Colab / Jupyter)
+│   ├── BYC_Dist_AOO_EOO.ipynb                                 # Notebook principal para estudiantes (Colab / Jupyter, sin GEE)
+│   └── Preparar_Rasters_MapBiomas_GEE.ipynb                   # Notebook auxiliar docente para generar paquetes 30 m desde GEE
+├── scripts/
+│   └── descargar_mapbiomas_gee.py                             # Script automatizado de descarga por tiles y unión en mosaico 30 m
 ├── data/
 │   ├── Coordenadas_codigo.csv                                 # Localidades de referencia y códigos cortos (5 especies)
 │   ├── Results_lleuque.zip                                    # Ejemplo real de salidas de STRUCTURE (K = 1..8, 24 corridas)
 │   ├── mapbiomas_chile_col2_cobertura_comunal_1999_2024.csv.gz   # Cobertura anual oficial MapBiomas Chile Col. 2.0 (CC BY 4.0)
 │   └── mapbiomas_chile_col2_transicion_comunal_1999_2024.csv.gz  # Transiciones comunales MapBiomas Chile Col. 2.0 (CC BY 4.0)
 ├── assets/
+│   ├── figura_structure_lleuque_K3.png
 │   ├── ejemplo_figura_lleuque_K5.png
 │   └── ejemplo_mapbiomas_riesgo_lleuque.png
 ├── requirements.txt                                           # Dependencias Python
@@ -55,12 +59,12 @@ byc-2026/
 
 ---
 
-## Inicio rápido (sin instalar nada en tu PC)
+## Inicio rápido
 
 1. Haz clic en el botón **Open in Colab** al inicio de este README.
 2. En la **Sección 2**, selecciona la especie (`Alerce`, `Araucaria`, `Lleuque`, `Queule` o `Ruil`) y la escala (`RCE_CHILE` o `UICN_GLOBAL`).
 3. *(Opcional)* En la **Sección 11.1**, activa `ACTIVAR_MODULO_STRUCTURE` y sube tu `.zip` de `Results/` (si no subes archivos, el notebook descarga automáticamente los archivos de ejemplo desde este repositorio para probar el flujo completo).
-4. En la **Sección 12.1**, el diagnóstico histórico de **MapBiomas Chile Colección 2.0 (1999–2024)** corre de forma automática; si además cuentas con recortes GeoTIFF de Cobertura Col. 2.0 o **MapBiomas Fuego Col. 1** descargados desde el portal de [MapBiomas Chile](https://chile.mapbiomas.org/), puedes subirlos para activar el análisis píxel a píxel de $30\text{ m}$ en buffers de `2 km` y `7,5 km`.
+4. En la **Sección 12.1**, el diagnóstico histórico de **MapBiomas Chile Colección 2.0 (1999–2024)** corre de forma automática. Cuando los paquetes pre-recortados de $30\text{ m}$ (`mapbiomas_<especie>_30m.zip`, preparados con el flujo docente en GEE) están disponibles en *GitHub Releases* o subidos a Colab, el módulo activa automáticamente el análisis píxel a píxel en buffers de `2 km` y `7,5 km`, celdas AOO y **MapBiomas Fuego Col. 1 (2013–2025)**.
 5. Ejecuta **Entorno de ejecución → Ejecutar todo** y descarga desde el panel izquierdo de Colab el GeoPackage `.gpkg` (para QGIS), los mapas interactivos `.html`, las tablas `.csv` y las figuras de alta resolución `.png` / `.svg`.
 
 ---

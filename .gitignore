@@ -1,7 +1,8 @@
 # Cachés y archivos temporales generados al ejecutar el notebook
 cache_limites_geo/
 mapbiomas_rasters_tmp/
-gadm41_*.zip
+rasters_mapbiomas/
+/gadm41_*.zip
 statistics_lulc_chile_col2_*.xlsx
 __pycache__/
 .ipynb_checkpoints/
